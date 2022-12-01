@@ -3,50 +3,72 @@
 import fileinput
 
 
+def calculate_calories(lines: list[str]) -> list[int]:
+    calories = []
+    current = 0
+    for line in lines:
+        if line:
+            current += int(line)
+        else:
+            calories.append(current)
+            current = 0
+    calories.append(current)
+    return calories
+
+
 def test_task1():
-    lines = [line.rstrip() for line in fileinput.input()]
-    assert True
+    lines = [
+        "1000",
+        "2000",
+        "3000",
+        "",
+        "4000",
+        "",
+        "5000",
+        "6000",
+        "",
+        "7000",
+        "8000",
+        "9000",
+        "",
+        "10000",
+    ]
+    solution = max(calculate_calories(lines))
+    assert solution == 24000
     print("tests for task 1: ok")
 
 
 def solve_task1():
     lines = [line.rstrip() for line in fileinput.input()]
-
-    calories = []
-    current = 0
-    for line in lines:
-        if line:
-            current += int(line)
-        else:
-            calories.append(current)
-            current = 0
-    calories.append(current)
-
-    solution = max(calories)
+    solution = max(calculate_calories(lines))
     print(f"answer to task 1: {solution}")
 
 
 def test_task2():
-    lines = [line.rstrip() for line in fileinput.input()]
-    assert True
+    lines = [
+        "1000",
+        "2000",
+        "3000",
+        "",
+        "4000",
+        "",
+        "5000",
+        "6000",
+        "",
+        "7000",
+        "8000",
+        "9000",
+        "",
+        "10000",
+    ]
+    solution = sum(sorted(calculate_calories(lines))[-3:])
+    assert solution == 45000
     print("tests for task 2: ok")
 
 
 def solve_task2():
     lines = [line.rstrip() for line in fileinput.input()]
-    calories = []
-    current = 0
-    for line in lines:
-        if line:
-            current += int(line)
-        else:
-            calories.append(current)
-            current = 0
-    calories.append(current)
-
-    calories.sort()
-
-    solution = sum(calories[-3:])
+    solution = sum(sorted(calculate_calories(lines))[-3:])
     print(f"answer to task 2: {solution}")
 
 
