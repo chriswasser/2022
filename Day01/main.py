@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import fileinput
+import heapq
 
 
 def calculate_calories(lines: list[str]) -> list[int]:
@@ -61,14 +62,14 @@ def test_task2():
         "",
         "10000",
     ]
-    solution = sum(sorted(calculate_calories(lines))[-3:])
+    solution = sum(heapq.nlargest(3, calculate_calories(lines)))
     assert solution == 45000
     print("tests for task 2: ok")
 
 
 def solve_task2():
     lines = [line.rstrip() for line in fileinput.input()]
-    solution = sum(sorted(calculate_calories(lines))[-3:])
+    solution = sum(heapq.nlargest(3, calculate_calories(lines)))
     print(f"answer to task 2: {solution}")
 
 
