@@ -3,6 +3,11 @@
 import fileinput
 from enum import auto, Enum
 
+from rich import print
+from rich.traceback import install
+
+install(show_locals=True)
+
 
 class Selection(Enum):
     ROCK = auto()

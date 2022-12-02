@@ -3,6 +3,11 @@
 import fileinput
 import heapq
 
+from rich import print
+from rich.traceback import install
+
+install(show_locals=True)
+
 
 def calculate_calories(lines: list[str]) -> list[int]:
     calories = []
@@ -18,57 +23,27 @@ def calculate_calories(lines: list[str]) -> list[int]:
 
 
 def test_task1():
-    lines = [
-        "1000",
-        "2000",
-        "3000",
-        "",
-        "4000",
-        "",
-        "5000",
-        "6000",
-        "",
-        "7000",
-        "8000",
-        "9000",
-        "",
-        "10000",
-    ]
+    lines = [line.rstrip() for line in fileinput.input("test")]
     solution = max(calculate_calories(lines))
     assert solution == 24000
     print("tests for task 1: ok")
 
 
 def solve_task1():
-    lines = [line.rstrip() for line in fileinput.input()]
+    lines = [line.rstrip() for line in fileinput.input("input")]
     solution = max(calculate_calories(lines))
     print(f"answer to task 1: {solution}")
 
 
 def test_task2():
-    lines = [
-        "1000",
-        "2000",
-        "3000",
-        "",
-        "4000",
-        "",
-        "5000",
-        "6000",
-        "",
-        "7000",
-        "8000",
-        "9000",
-        "",
-        "10000",
-    ]
+    lines = [line.rstrip() for line in fileinput.input("test")]
     solution = sum(heapq.nlargest(3, calculate_calories(lines)))
     assert solution == 45000
     print("tests for task 2: ok")
 
 
 def solve_task2():
-    lines = [line.rstrip() for line in fileinput.input()]
+    lines = [line.rstrip() for line in fileinput.input("input")]
     solution = sum(heapq.nlargest(3, calculate_calories(lines)))
     print(f"answer to task 2: {solution}")
 
