@@ -22,37 +22,45 @@ def calculate_calories(lines: list[str]) -> list[int]:
     return calories
 
 
-def test_task1():
-    lines = [line.rstrip() for line in fileinput.input("test")]
-    solution = max(calculate_calories(lines))
-    assert solution == 24000
-    print("tests for task 1: ok")
+def process_part1(lines: list[str]) -> str:
+    return str(max(calculate_calories(lines)))
 
 
-def solve_task1():
-    lines = [line.rstrip() for line in fileinput.input("input")]
-    solution = max(calculate_calories(lines))
-    print(f"answer to task 1: {solution}")
+def process_part2(lines: list[str]) -> str:
+    return str(sum(heapq.nlargest(3, calculate_calories(lines))))
 
 
-def test_task2():
-    lines = [line.rstrip() for line in fileinput.input("test")]
-    solution = sum(heapq.nlargest(3, calculate_calories(lines)))
-    assert solution == 45000
-    print("tests for task 2: ok")
+def test_part1():
+    lines = [line.rstrip() for line in fileinput.input("input-testing.txt")]
+    solution = process_part1(lines)
+    assert solution == "24000"
+    print("testing part 1: ✓")
 
 
-def solve_task2():
-    lines = [line.rstrip() for line in fileinput.input("input")]
-    solution = sum(heapq.nlargest(3, calculate_calories(lines)))
-    print(f"answer to task 2: {solution}")
+def test_part2():
+    lines = [line.rstrip() for line in fileinput.input("input-testing.txt")]
+    solution = process_part2(lines)
+    assert solution == "45000"
+    print("testing part 2: ✓")
+
+
+def solve_part1():
+    lines = [line.rstrip() for line in fileinput.input("input-solving.txt")]
+    solution = process_part1(lines)
+    print(f"solving part 1: {solution}")
+
+
+def solve_part2():
+    lines = [line.rstrip() for line in fileinput.input("input-solving.txt")]
+    solution = process_part2(lines)
+    print(f"solving part 2: {solution}")
 
 
 def main():
-    test_task1()
-    solve_task1()
-    test_task2()
-    solve_task2()
+    test_part1()
+    solve_part1()
+    test_part2()
+    solve_part2()
 
 
 if __name__ == "__main__":

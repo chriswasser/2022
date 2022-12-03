@@ -38,7 +38,7 @@ def score_character(character: str) -> int:
     raise ValueError(f"cannot score invalid character '{character}'")
 
 
-def process_task1(lines: list[str]) -> str:
+def process_part1(lines: list[str]) -> str:
     total = 0
     for rucksack in lines:
         middle = len(rucksack) // 2
@@ -48,7 +48,7 @@ def process_task1(lines: list[str]) -> str:
     return str(total)
 
 
-def process_task2(lines: list[str]) -> str:
+def process_part2(lines: list[str]) -> str:
     total = 0
     for group in grouper(lines, 3):
         rucksacks = [set(rucksack) for rucksack in group]
@@ -57,37 +57,37 @@ def process_task2(lines: list[str]) -> str:
     return str(total)
 
 
-def test_task1():
-    lines = [line.rstrip() for line in fileinput.input("test")]
-    solution = process_task1(lines)
+def test_part1():
+    lines = [line.rstrip() for line in fileinput.input("input-testing.txt")]
+    solution = process_part1(lines)
     assert solution == "157"
-    print("tests for task 1: ok")
+    print("testing part 1: ✓")
 
 
-def solve_task1():
-    lines = [line.rstrip() for line in fileinput.input("input")]
-    solution = process_task1(lines)
-    print(f"answer to task 1: {solution}")
-
-
-def test_task2():
-    lines = [line.rstrip() for line in fileinput.input("test")]
-    solution = process_task2(lines)
+def test_part2():
+    lines = [line.rstrip() for line in fileinput.input("input-testing.txt")]
+    solution = process_part2(lines)
     assert solution == "70"
-    print("tests for task 2: ok")
+    print("testing part 2: ✓")
 
 
-def solve_task2():
-    lines = [line.rstrip() for line in fileinput.input("input")]
-    solution = process_task2(lines)
-    print(f"answer to task 2: {solution}")
+def solve_part1():
+    lines = [line.rstrip() for line in fileinput.input("input-testing.txt")]
+    solution = process_part1(lines)
+    print(f"solving part 1: {solution}")
+
+
+def solve_part2():
+    lines = [line.rstrip() for line in fileinput.input("input-solving.txt")]
+    solution = process_part2(lines)
+    print(f"solving part 2: {solution}")
 
 
 def main():
-    test_task1()
-    solve_task1()
-    test_task2()
-    solve_task2()
+    test_part1()
+    solve_part1()
+    test_part2()
+    solve_part2()
 
 
 if __name__ == "__main__":

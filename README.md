@@ -4,7 +4,7 @@ Repository for my solutions to the [Advent of Code 2022](https://adventofcode.co
 
 ## Progress
 
-| Day | Task 1 | Task 2 |
+| Day | Part 1 | Part 2 |
 | --: | :----: | :----: |
 |   1 |      ✓ |      ✓ |
 |   2 |      ✓ |      ✓ |

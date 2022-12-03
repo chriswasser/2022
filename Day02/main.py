@@ -21,7 +21,7 @@ class Result(Enum):
     WIN = auto()
 
 
-def score_game1(lines: list[str]) -> int:
+def process_part1(lines: list[str]) -> str:
     opponent_map = {
         "A": Selection.ROCK,
         "B": Selection.PAPER,
@@ -60,10 +60,10 @@ def score_game1(lines: list[str]) -> int:
         total_score += (
             selection_score[myself_map[myself]] + result_score[result_map[opponent_map[opponent], myself_map[myself]]]
         )
-    return total_score
+    return str(total_score)
 
 
-def score_game2(lines: list[str]) -> int:
+def process_part2(lines: list[str]) -> str:
     opponent_map = {
         "A": Selection.ROCK,
         "B": Selection.PAPER,
@@ -102,40 +102,40 @@ def score_game2(lines: list[str]) -> int:
         total_score += (
             selection_score[myself_map[opponent_map[opponent], result_map[result]]] + result_score[result_map[result]]
         )
-    return total_score
+    return str(total_score)
 
 
-def test_task1():
-    lines = [line.rstrip() for line in fileinput.input("test")]
-    solution = score_game1(lines)
-    assert solution == 15
-    print("tests for task 1: ok")
+def test_part1():
+    lines = [line.rstrip() for line in fileinput.input("input-testing.txt")]
+    solution = process_part1(lines)
+    assert solution == "15"
+    print("testing part 1: ✓")
 
 
-def solve_task1():
-    lines = [line.rstrip() for line in fileinput.input("input")]
-    solution = score_game1(lines)
-    print(f"answer to task 1: {solution}")
+def test_part2():
+    lines = [line.rstrip() for line in fileinput.input("input-testing.txt")]
+    solution = process_part2(lines)
+    assert solution == "12"
+    print("testing part 2: ✓")
 
 
-def test_task2():
-    lines = [line.rstrip() for line in fileinput.input("test")]
-    solution = score_game2(lines)
-    assert solution == 12
-    print("tests for task 2: ok")
+def solve_part1():
+    lines = [line.rstrip() for line in fileinput.input("input-solving.txt")]
+    solution = process_part1(lines)
+    print(f"solving part 1: {solution}")
 
 
-def solve_task2():
-    lines = [line.rstrip() for line in fileinput.input("input")]
-    solution = score_game2(lines)
-    print(f"answer to task 2: {solution}")
+def solve_part2():
+    lines = [line.rstrip() for line in fileinput.input("input-solving.txt")]
+    solution = process_part2(lines)
+    print(f"solving part 2: {solution}")
 
 
 def main():
-    test_task1()
-    solve_task1()
-    test_task2()
-    solve_task2()
+    test_part1()
+    solve_part1()
+    test_part2()
+    solve_part2()
 
 
 if __name__ == "__main__":
