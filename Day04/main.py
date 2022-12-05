@@ -34,27 +34,27 @@ def process_part2(lines: list[str]) -> str:
 
 
 def test_part1():
-    lines = [line.rstrip() for line in fileinput.input("input-testing.txt")]
+    lines = [line.rstrip("\n") for line in fileinput.input("input-testing.txt")]
     solution = process_part1(lines)
     assert solution == "2"
     print("testing part 1: ✓")
 
 
 def test_part2():
-    lines = [line.rstrip() for line in fileinput.input("input-testing.txt")]
+    lines = [line.rstrip("\n") for line in fileinput.input("input-testing.txt")]
     solution = process_part2(lines)
     assert solution == "4"
     print("testing part 2: ✓")
 
 
 def solve_part1():
-    lines = [line.rstrip() for line in fileinput.input("input-solving.txt")]
+    lines = [line.rstrip("\n") for line in fileinput.input("input-solving.txt")]
     solution = process_part1(lines)
     print(f"solving part 1: {solution}")
 
 
 def solve_part2():
-    lines = [line.rstrip() for line in fileinput.input("input-solving.txt")]
+    lines = [line.rstrip("\n") for line in fileinput.input("input-solving.txt")]
     solution = process_part2(lines)
     print(f"solving part 2: {solution}")
 
